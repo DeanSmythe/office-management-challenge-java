@@ -36,4 +36,20 @@ public class RoomTest {
         room.leave();
         assertEquals("Enter room becomes available", room.isAvailable(), true );
     }
+
+    @Test public void roomIsNotAvailbleAndGivesError() {
+        String name = new String("Room1");
+        Room room = new Room(name);
+        room.book();
+        assertEquals("Booked room is not available", room.isAvailable(), false);
+        assertThrows(IllegalStateException.class, room::enter);
+    }
+
+    @Test public void roomIsBookedAndGivesError() {
+        String name = new String("Room1");
+        Room room = new Room(name);
+        room.book();
+        assertEquals("Booked room is not available", room.isAvailable(), false);
+        assertThrows(IllegalStateException.class, ()->{room.book();} );
+    }
 }

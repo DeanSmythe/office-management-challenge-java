@@ -19,11 +19,18 @@ Boolean available;
 
     }
     public void book() {
-        available = false;
+        if (available == false) {
+            throw new IllegalStateException("Room is already in use");
+        }
 
+        available = false;
     }
 
     public void enter() {
+        if (available == false) {
+            throw new IllegalStateException("Room is already in use");
+        }
+
         available = false;
 
     }
