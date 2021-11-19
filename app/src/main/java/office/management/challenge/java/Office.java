@@ -11,4 +11,12 @@ public class Office {
     public ArrayList<Room> getRooms() {
         return rooms;
     }
+    public ArrayList<Room> getAvailableRooms() {
+        ArrayList<Room> availableRooms = new ArrayList<>();
+        for (Room room : rooms)
+            if (room.isAvailable()) {
+                availableRooms.add(room);
+        }
+        return availableRooms;
+    }
 }
