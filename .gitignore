@@ -3,3 +3,7 @@
 
 # Ignore Gradle build output directory
 build
+
+coverage/
+#Ignore the environment variables for twilio
+twilio.env

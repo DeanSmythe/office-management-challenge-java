@@ -47,11 +47,13 @@ public class OfficeTest {
         Office myOffice = new Office();
         myOffice.addRoom(room);
         myOffice.addRoom(room2);
+        Team team = new Team("Team1");
+        Meeting meeting = new Meeting("Meeting1");
         Room result = myOffice.getAvailableRooms().get((myOffice.getRooms().size() - 2));
         assertEquals("Office returns room1", room, result);
         result = myOffice.getAvailableRooms().get((myOffice.getRooms().size() - 1));
         assertEquals("Office returns room2", room2, result);
-        room2.enter();
+        room2.enter(team, meeting);
         assertEquals("List only has one item", 1, myOffice.getAvailableRooms().size());
         result = myOffice.getAvailableRooms().get((myOffice.getAvailableRooms().size() - 1));
         assertEquals("Office returns room1", room, result);

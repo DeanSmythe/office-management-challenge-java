@@ -26,23 +26,32 @@ public class RoomTest {
     @Test public void roomIsEntered() {
         String name = new String("Room1");
         Room room = new Room(name);
-        room.enter();
+        Team team = new Team("Team1");
+        Meeting meeting = new Meeting("Meeting1");
+        room.enter(team, meeting);
         assertEquals("Enter room becomes not available", room.isAvailable(), false );
+        assertEquals("Enter room has team", team, room.getTeam() );
+        assertEquals("Enter room has meeting", meeting, room.getMeeting() );
     }
+
     @Test public void roomIsLeft() {
         String name = new String("Room1");
         Room room = new Room(name);
-        room.enter();
+        Team team = new Team("Team1");
+        Meeting meeting = new Meeting("Meeting1");
+        room.enter(team, meeting);
         room.leave();
-        assertEquals("Enter room becomes available", room.isAvailable(), true );
+        assertEquals("Leaving room becomes available", true, room.isAvailable());
+        assertEquals("Team becomes null", null, room.getTeam());
+        assertEquals("Meeting becomes null", null, room.getMeeting());
     }
 
-    @Test public void roomIsNotAvailbleAndGivesError() {
+    @Test public void roomIsNotAvailableAndGivesError() {
         String name = new String("Room1");
         Room room = new Room(name);
         room.book();
-        assertEquals("Booked room is not available", room.isAvailable(), false);
-        assertThrows(IllegalStateException.class, room::enter);
+        assertEquals("Booked room is not available",false, room.isAvailable());
+        assertThrows(IllegalStateException.class, () -> {room.enter(new Team("Team1"), new Meeting("Meeting1"));} );
     }
 
     @Test public void roomIsBookedAndGivesError() {

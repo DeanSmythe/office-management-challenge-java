@@ -9,6 +9,7 @@ public class Office {
     rooms.add(room);
     }
     public ArrayList<Room> getRooms() {
+//        System.out.println(rooms);
         return rooms;
     }
     public ArrayList<Room> getAvailableRooms() {
@@ -17,6 +18,8 @@ public class Office {
             if (room.isAvailable()) {
                 availableRooms.add(room);
         }
+
+//        System.out.println(availableRooms);
         return availableRooms;
     }
 }
