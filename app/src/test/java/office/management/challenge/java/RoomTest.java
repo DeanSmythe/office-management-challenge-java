@@ -23,4 +23,17 @@ public class RoomTest {
         room.book();
         assertEquals("Booked room is not available", room.isAvailable(), false );
     }
+    @Test public void roomIsEntered() {
+        String name = new String("Room1");
+        Room room = new Room(name);
+        room.enter();
+        assertEquals("Enter room becomes not available", room.isAvailable(), false );
+    }
+    @Test public void roomIsLeft() {
+        String name = new String("Room1");
+        Room room = new Room(name);
+        room.enter();
+        room.leave();
+        assertEquals("Enter room becomes available", room.isAvailable(), true );
+    }
 }

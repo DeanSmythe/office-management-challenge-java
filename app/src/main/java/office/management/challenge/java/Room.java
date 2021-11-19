@@ -14,13 +14,22 @@ Boolean available;
     public String getName() {
         return this.name;
     }
+    public Boolean isAvailable() {
+        return available;
+
+    }
     public void book() {
         available = false;
 
     }
 
-    public Boolean isAvailable() {
-        return available;
+    public void enter() {
+        available = false;
 
     }
+    public void leave() {
+        available = true;
+
+    }
+
 } // Class
